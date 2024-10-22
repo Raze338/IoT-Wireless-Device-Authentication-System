@@ -1,0 +1,48 @@
+IoT Command Ideas
+
+
+Voice Interactive Commands:
+
+•	Calculator:
+1.	Detecting Voice Input on Micro
+A: Microbit A can listen for sound input using its microphone and send a signal (via radio) to a computer or smartphone when it detects voice activity.
+2.	Voice Recognition on External Device:
+o	A computer or smartphone with a voice recognition system (like Google Voice API, Apple’s Siri, or any speech-to-text service) listens for the phrase "5 plus 5."
+o	Once recognized, the device can convert the spoken input into text and extract the numbers and the operation (addition in this case).
+3.	Transmitting Data to Microbit B: 
+1.	The external device (computer or smartphone) processes the voice data and sends the result (e.g., "5" and "5" for the addition operation) to Microbit B using Bluetooth or a connected serial link.
+4.	Microbit B Triggering the Calculator:
+o	Microbit B, connected to a computer via USB, sends a signal to the computer to open the calculator application.
+o	Using a Python script running on the connected computer, it can read the signal from Microbit B, open the calculator, and simulate key presses to add the numbers.
+
+
+•	Voice Command:
+1.	Microbit A: Detects the presence of speech (via sound level) and communicates with an external device (e.g., PC or smartphone) running speech recognition software.
+2.	Speech Recognition Software: Processes the audio and recognizes the specific voice command like "Open Google".
+3.	Microbit B: Receives the recognized command via radio and triggers a script on the connected computer (e.g., a Python script) that opens Google in a web browser.
+
+•	Clap Detection to Control Lights on the Second Micro:bit:
+1.	Microbit A: Detects a clap sound using the microphone.
+2.	Microbit B: Receives the signal and turns on/off its LED display or external lights (if connected).
+Example:
+•	One clap turns the LED display on.
+•	Two claps turn it off
+
+•	Noise Level Alert System:
+1.	Microbit A: Monitors sound levels in the environment.
+2.	Microbit B: Receives an alert if the noise level exceeds a certain threshold, like when it gets too noisy.
+•	Application: Could be used to manage noise levels in a quiet environment by displaying a warning or sending a buzzer signal (like a fire alarm).
+
+
+Heat Interactive Commands:
+•	Fire Alarm:
+1.	Microbit A Detects heat
+2.	If heat exceeds a threshold, it sends a signal to microbit B
+3.	Microbit B sounds a fire alarm type sound on the buzzer, with the micrbit showing a sad face, exclamation mark, etc.
+
+4.	EXTENSION: Assuming that both microbits are placed near each other, when microbit A is hot and micrbot bit B sounds the buzzer, A fan connected using a motor to microbit B is activated to try and cool down microbit A, stopping the buzzer or having it make a new sound to indicate it.   
+
+
+
+
+
