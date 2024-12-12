@@ -8,8 +8,11 @@ This project uses two Micro:bit v2 devices to send and recieve encrypted command
 1.	Memory Game: LED-based memory game.
 2.	Capacitor Charge Detector: Displays capacitor charge level with LEDs.
 3.	Third Command: Template for any future commands.
-Features
+
+Features:
+
 •	Encryption: Ensures secure communication between devices using a symmetric encryption key (DPK).
+
 •	Wireless Communication: Uses Micro:bit's built-in radio to send and receive commands.
 
 ## Setup and Usage
