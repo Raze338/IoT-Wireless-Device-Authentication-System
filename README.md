@@ -1,66 +1,58 @@
 # Lightweight Authentic Wireless Communications for Micro:Bit IoT Device: Group Project
 # IoT Assessment Group 1.6
-## Students: Marwan Alkhateeb, Abdulrahman Ali
+## Students: Marwan Alkhateeb 21058474, Abdulrahman Ali 21065685
 
 ## OverView
 
 This project uses two Micro:bit v2 devices to send and recieve encrypted commands wirelessly. The system features:
-1.	Memory Game: LED-based memory game.
-2.	Capacitor Charge Detector: Displays capacitor charge level with LEDs.
-3.	Third Command: Template for any future commands.
+1.	Capacitor Charge Detector: Displays capacitor charge level with LEDs.
+2.	Memory Test: LED-based memory test.
+3.	Sound Detector: LED-based noise detector.
 
 Features:
 
-•	Encryption: Ensures secure communication between devices using a symmetric encryption key (DPK).
+- Encryption: Ensures secure communication between devices using a symmetric encryption key (DPK).
+- Wireless Communication: Uses Micro:bit's built-in radio to send and receive commands.
 
-•	Wireless Communication: Uses Micro:bit's built-in radio to send and receive commands.
+### Flowchart
+
+![alt text](IoT_Flowchart.png "Flowchart of Project")
 
 ## Setup and Usage
 ### 1. The Encryption Setup
 
 Securly sending commands involves generating a Device Pairing Key (DPK), which is used for the encryption. Setting Up a shared secret for both the transmitter and the reciever is crucial for generating the DPK:
 
-#### Step 1: Generating the DPK
+#### Generating the DPK
 
-The DPK is generated using a pre-set shared secret between both devices. 
+The DPK is generated using a pre-set shared secret between both devices, and randomly generated salt. 
 
-•	Example DPK: A simple shared secret could be a string like my_shared_secret_key.
+- Secret: A constant 16-byte shared secret: ``"A8QjJ3ZUqBwCOei"``.
+- Salt: A randomly generated 16-byte string (not seeded).
 
-•	Encryption: This DPK is used in both the transmitter and receiver to encrypt and decrypt messages.
-
-#### Step 2: Encryption/Decryption
-
-•	Transmitter: Encrypts the command before sending it via radio.
-
-•	Receiver: Decrypts the command upon receiving it and then processes it.
+![alt text2](DPK.PNG "DPK Generation Process")
 
 ### 2. Sending Commands
 
-The transmitter sends encrypted commands over the radio channel using the radio.send() function. The commands can be:
-
-•	LED Simon Says Game Command (e.g., start or reset the game)
-
-•	Capacitor Charge Detection Command (e.g., start charging and show progress)
-
-•	Custom Command Template: Placeholder for additional functionality.
+The sender encrypts the command using the DPK and AES-128 ECB-Mode before sending it via radio. Once encrypted, the commands are sent over the radio channel alongside the salt using the ``radio.datagram.send()`` function. 
 
 ### 3. Receiving Commands
 
-The receiver listens for incoming commands using radio.onReceived(). Upon receiving a command, it decrypts it using the shared DPK and executes the corresponding action.
+The receiver listens for incoming commands using ``radio.datagram.recv()``. Upon receiving a command, it decrypts it by regenerating the DPK using the shared secret and the received salt and executes the corresponding action.
 
-## Commands 
+## Commands
 
-### 1. Memory Game
+### 1. Capacitor Charge Detector
 
-This game uses LEDs (RED, AMBER, YELLOW, GREEN) to display a sequence of lights. The user needs to replicate the sequence using sudo screen. E.g. if the first LED is RED, the user needs to input 'R' in sudo screen. The following sequence would be RED and GREEN, where the user would need to input 'R' and 'G', having the game go one with more complex sequences until the user inputs the wrong sequence, resulting in a "Game Over".
+This command involves having the users input a number from the range of 0-1023 (representing the PWM limit of the Microbit) on sudo screen, which charges the capacitor accordingly, and displaying how full the capacitor is using the 4 LEDs on the breadboard (RED, AMBER, YELLOW, GREEN). E.g. RED being a range below 256 PWM, and GREEN being a range above 768 PWM. 
 
-### 2. Capacitor Charge Detector
+### 2. Memory Test
 
-This command involves having the users input a number from the range of 0-1023 (representing the PWM limit of the Microbit) on sudo screen, which charges the capacitor accordingly, and displaying how full the capacitor is using the 4 LEDs on the breadboard (RED, AMBER, YELLOW, GREEN). E.g. RED being a range below 200 PWM, and GREEN being a range above 750 PWM. 
+This test uses LEDs (RED, AMBER, YELLOW, GREEN) to display a sequence of lights. The user needs to replicate the sequence using sudo screen. E.g. if the first LED is RED, the user needs to the index of the LED Light in the serial screen (i.e. 1). The following sequence would be RED and GREEN, where the user would need to input '1' and '4', having the test go one with more complex sequences until the user inputs the wrong sequence, resulting in a "Game Over".
 
 ### 3. Sound Detector
 
-This command involves having the sending Microbit listen to sounds, and counting the amount of sounds in the environment and reflecting it on the LEDs (RED, AMBER, YELLOW, GREEN), with RED being a sounds below 10, and GREEN being sounds above 40 respectively.
+This command involves having the sending Microbit listen to sounds, and counting the amount of sounds in the environment and reflecting it on the LEDs (RED, AMBER, YELLOW, GREEN), with RED being 1 sound, and RED to GREEN being 0/4 sounds.
 
 ## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+
