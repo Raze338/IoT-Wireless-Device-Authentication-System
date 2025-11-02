@@ -1,6 +1,4 @@
 # Lightweight Authentic Wireless Communications for Micro:Bit IoT Device: Group Project
-# IoT Assessment Group 1.6
-## Students: Marwan Alkhateeb 21058474, Abdulrahman Ali 21065685
 
 ## OverView
 
