@@ -1,4 +1,4 @@
-# Lightweight Authentic Wireless Communications for Micro:Bit IoT Device: Group Project
+# Lightweight Authentic Wireless Communications for Micro:Bit IoT Device
 
 ## Overview
 
