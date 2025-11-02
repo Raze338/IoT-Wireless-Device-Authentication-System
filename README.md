@@ -1,6 +1,6 @@
 # Lightweight Authentic Wireless Communications for Micro:Bit IoT Device: Group Project
 
-## OverView
+## Overview
 
 This project uses two Micro:bit v2 devices to send and recieve encrypted commands wirelessly. The system features:
 1.	Capacitor Charge Detector: Displays capacitor charge level with LEDs.
@@ -52,5 +52,4 @@ This test uses LEDs (RED, AMBER, YELLOW, GREEN) to display a sequence of lights.
 
 This command involves having the sending Microbit listen to sounds, and counting the amount of sounds in the environment and reflecting it on the LEDs (RED, AMBER, YELLOW, GREEN), with RED being 1 sound, and RED to GREEN being 0/4 sounds.
 
-## Authors and acknowledgment
 
